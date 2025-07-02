@@ -29,7 +29,7 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchProducts = () => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://ecommerce-backend-r8r8.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched products:", data);
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`https://ecommerce-backend-r8r8.onrender.com/api/products/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -130,7 +130,7 @@ const AdminDashboard = () => {
                     {console.log('Product imageUrl:', product.imageUrl)}
                     {product.imageUrl ? (
                       <img
-                        src={product.imageUrl.startsWith('http') ? product.imageUrl : `http://localhost:5000${product.imageUrl}`}
+                        src={product.imageUrl.startsWith('http') ? product.imageUrl : `https://ecommerce-backend-r8r8.onrender.com${product.imageUrl}`}
                         alt={product.name}
                       />
                     ) : (
@@ -170,7 +170,7 @@ const AdminDashboard = () => {
                   formDataObj.set("image", form.image.files[0]);
                 }
                 try {
-                  const response = await fetch(`http://localhost:5000/api/products/${editingProduct._id}`, {
+                  const response = await fetch(`https://ecommerce-backend-r8r8.onrender.com/api/products/${editingProduct._id}`, {
                     method: "PATCH",
                     body: formDataObj,
                   });

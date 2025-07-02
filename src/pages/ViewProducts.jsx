@@ -17,7 +17,7 @@ const ViewProducts = () => {
   // Fetch products from backend
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch("https://ecommerce-backend-r8r8.onrender.com/api/products");
       const data = await res.json();
       setProducts(data);
     } catch (err) {
@@ -35,7 +35,7 @@ const ViewProducts = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/products/${productId}`);
+      await axios.delete(`https://ecommerce-backend-r8r8.onrender.com/api/products/${productId}`);
       alert("Product deleted!");
       fetchProducts(); // Refresh list
     } catch (err) {
@@ -89,7 +89,7 @@ const ViewProducts = () => {
                   <td>
                     {product.imageUrl ? (
                       <img
-                        src={product.imageUrl.startsWith('http') ? product.imageUrl : `http://localhost:5000${product.imageUrl}`}
+                        src={product.imageUrl.startsWith('http') ? product.imageUrl : `https://ecommerce-backend-r8r8.onrender.com${product.imageUrl}`}
                         alt={product.name}
                         className="product-img"
                       />
@@ -128,7 +128,7 @@ const ViewProducts = () => {
                     formDataObj.set("image", form.image.files[0]);
                   }
                   try {
-                    const response = await fetch(`http://localhost:5000/api/products/${editingProduct._id}`, {
+                    const response = await fetch(`https://ecommerce-backend-r8r8.onrender.com/api/products/${editingProduct._id}`, {
                       method: "PATCH",
                       body: formDataObj,
                     });
@@ -206,7 +206,7 @@ const ViewProducts = () => {
                     formDataObj.set("image", form.image.files[0]);
                   }
                   try {
-                    const response = await fetch(`http://localhost:5000/api/products`, {
+                    const response = await fetch(`https://ecommerce-backend-r8r8.onrender.com/api/products`, {
                       method: "POST",
                       body: formDataObj,
                     });
